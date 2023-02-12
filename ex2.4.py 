@@ -31,7 +31,7 @@ def func2(array, start, end):
     return high
 
 # Read data from the JSON file
-with open("ex2.json", "r") as f:
+with open("ex2.5.json", "r") as f:
     arr_raw = json.load(f)
 
 # Convert the elements in the array to integers
@@ -47,18 +47,17 @@ for element in arr_raw:
 low = 0
 high = len(arr) - 1
 
-# Measure the execution time of the sorting function
 start_time = time.time()
 func1(arr, low, high)
 end_time = time.time()
 
-# Print the sorted array
-print(arr)
-
 # Plot the timing results
-plt.plot([start_time, end_time], [0, 0], marker="o")
+time_points = [start_time, end_time]
+execution_time = [0, end_time - start_time]
+plt.plot(time_points, execution_time)
 plt.xlabel("Time (seconds)")
 plt.ylabel("Execution Time")
 plt.title("Quick Sort Timing Results")
 plt.show()
+
 print(end_time-start_time)
